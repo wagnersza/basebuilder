@@ -63,10 +63,12 @@ class Manager(object):
 
     def install_composer(self):
         if os.path.isfile(os.path.join(self.application.get('directory'), 'composer.json')):
-            print('Install composer dependencies')
+            print('Install mcrypt')
 
             if os.system('/usr/sbin/php5enmod mcrypt') != 0:
                 raise InstallationException('Unable to install mcrypt')
+
+            print('Install composer dependencies')
 
             composer_phar = os.path.join(self.application.get('directory'), 'composer.phar')
             if not os.path.isfile(composer_phar):
