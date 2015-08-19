@@ -80,9 +80,9 @@ class Manager(object):
                 if os.system(download_cmd) != 0:
                     raise InstallationException('Unable to download composer')
 
-            if os.system('cd %s && %s install' % (self.application.get('directory'), composer_phar)) != 0:
-                print ('cd %s && %s install' % (self.application.get('directory'), composer_phar))
-                raise InstallationException('Unable to install composer dependencies')
+            os.system('cd %s && %s install' % (self.application.get('directory'), composer_phar))
+            print ('cd %s && %s install' % (self.application.get('directory'), composer_phar))
+
 
     def configure(self):
         if self.interpretor is not None:
